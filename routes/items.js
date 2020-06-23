@@ -2,18 +2,32 @@ const express = require('express');
 const router = express.Router();
 const List = require('../models/item')
 
-//Get Router
+//Get index
 router.get('/',(req,res,next)=>{
-    res.render('index',{title:'Purchase List'});
+    res.render('index',{title:'Check List'});
+});
+
+//Get list
+router.get('/list',(req,res,next)=>{
+    res.render('list',{title:'Check List Items'});
 });
 
 //@access Public
 router.get('/getItems',(req,res)=>{
     List.find()
         .sort({date:-1})
-        .then(items => res.json(items));
+        .map( function(u) { return u.name; } )
+        .then(items => res.json(items))
         console.log(`REQUEST RECIEVED****`);
     });
+
+// //@access Public
+// router.get('/getItems',(req,res)=>{
+//     List.find()
+//         .sort({date:-1})
+//         .then(items => res.json(items));
+//         console.log(`REQUEST RECIEVED****`);
+//     });
 
 
  //Post
