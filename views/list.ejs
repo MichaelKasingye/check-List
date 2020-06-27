@@ -2,11 +2,10 @@
 <%- include('navbar.ejs') %>
 <div class="container">
 <h4><%= title %></h4>
-<ul class="list-group">
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
+<ul>
+  <% lists.forEach(function(list){ %>
+    <li><%= list.name %></li>
+  <% }); %>
 </ul>
 </div>
 <%- include('footer.ejs') %> 
