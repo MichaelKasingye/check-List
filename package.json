@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "git": "^0.1.5",
     "gitignore": "^0.6.0",
+    "method-override": "^3.0.0",
     "mongoose": "^5.9.19",
     "nodemon": "^2.0.4"
   }

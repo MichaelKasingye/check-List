@@ -12,13 +12,13 @@ router.get('/list',(req,res,next)=>{
     List.find({},(err, list_item)=>{
         if(err) console.log(err);
         else{
-            res.render("list",{
+            res.render("list.ejs",{
                 lists:list_item,
                 title:'Check List'
             })
         }
     }).sort({date:-1})
-    console.log(`REQUEST RECIEVED****`);
+    console.log(`GET REQUEST RECIEVED****`);
 });
 
  //Post
@@ -28,7 +28,7 @@ router.get('/list',(req,res,next)=>{
      });
      newList.save()
      .then(postedList => 
-        res.redirect('/')// you redirect routes
+        res.redirect('/list')// you redirect routes
          )
      .catch(err => res.status(404).json({
          Success:false,
@@ -38,12 +38,19 @@ router.get('/list',(req,res,next)=>{
  }) 
  
   //Delete HAVE THIS IMPLEMENTED ON THE /LIST ROUTE and page
-  router.delete('/:id', (req,res)=>{
+  router.delete('/delete/:id', (req,res)=>{
      List.findById(req.params.id)
      .then(listItemId => listItemId
         .remove()
-        .then(()=> res.json({Success:console.log(`SUCCESS`)})))
+        .then(()=> res.json({Success:console.log(`ITEM DELETED`)})))
         .catch(err=>res.status(404).json({Success:console.log(`FAILED TO POSTED****, STH MISSING`)})) 
   });
+// router.delete('/delete/:id', (req,res)=>{
+//     List.deleteOne(myquery, function(err, obj) {
+//         if (err) throw err;
+//         console.log("1 document deleted");
+//         List.close();
+//       });
+//  });
  
 module.exports = router;

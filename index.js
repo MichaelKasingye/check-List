@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const items = require('./routes/items');
 const path = require('path');
 const app = express();
+const methodOveride = require('method-override');
 if(process.env.NODE_ENV !== 'production'){
     const dotenv = require('dotenv').config();
 }
@@ -29,6 +30,9 @@ const mongoLdb = process.env.MONGO_URI;
 
 // Use Routes
 app.use('/', items);
+// use Method Overide
+app.use(methodOveride('_method'));
+
 
 //mongoo connect
 mongoose

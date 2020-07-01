@@ -3,9 +3,15 @@
 <div class="container">
 <h4><%= title %></h4>
 <ul>
-  <% lists.forEach(function(list){ %>
-    <li><%= list.name %></li>
-  <% }); %>
-</ul>
+  <ul>
+    <% lists.forEach(function(list){ %>
+      <li><%= list.name %>
+        <form method="POST" action="/delete/<%=list.id%>?_method=DELETE">
+      <button class="btn" type="submit">x</button>
+      </form></li>
+    <% }); %>
+  </ul>
 </div>
 <%- include('footer.ejs') %> 
+
+
