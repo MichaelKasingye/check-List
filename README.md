@@ -1,2 +1,2 @@
 # check-List
-This is a node Express js check list app
+This is a node Express js check list app.
